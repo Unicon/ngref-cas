@@ -46,6 +46,7 @@ The configuration for the handler is in src/main/resources/META-INF/spring.facto
 #OIDC Provider
 ## Endpoints
 * JWKS https://localhost:8443/cas/oidc/jwks
+https://localhost:8443/cas/oidc/.well-known
 
 
 # Configuration Notes
