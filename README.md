@@ -1,16 +1,14 @@
+# Reference Implementation for the Wiley NextGEN CAS Server
+
+The reference implementaton demonstrates the use of CAS to fulfil the following requirements:
+* CAS as an OpenID Connect Identity Provider for the MyWileyPlus SPA supporting the OpenID Connect Implicit flow
+* CAS as an OAUTH2 Server supporting the Client Credentials flow for App to App API calls
+* CAS configured to use a Custom Login Provider calling the NextGen user auth service
+* Demonstrates customizing CAS using the CAS overlay process
+
+
 CAS Overlay For Wiley NextGEN CAS server
-============================
 
- 
-# Versions
-
-```xml
-<cas.version>5.2.x</cas.version>
-```
-
-# Requirements
-
-* JDK 1.8+
 
 #
 # Wiley Build Instructions
@@ -50,4 +48,3 @@ The configuration for the handler is in src/main/resources/META-INF/spring.facto
 * JWKS https://localhost:8443/cas/oidc/jwks
 
 
-docker run -d   -p 8888:8080 --name tomcat tomcat:8.0
