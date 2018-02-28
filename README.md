@@ -48,3 +48,5 @@ The configuration for the handler is in src/main/resources/META-INF/spring.facto
 * JWKS https://localhost:8443/cas/oidc/jwks
 
 
+# Configuration Notes
+## Custom Login Provider
