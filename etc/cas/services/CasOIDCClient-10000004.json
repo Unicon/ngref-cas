@@ -8,5 +8,8 @@
   "supportedGrantTypes" : [ "java.util.HashSet",
     [ "implicit" ]
   ],
+  "scopes" : [ "java.util.HashSet",
+    [ "profile", "email", "address", "phone", "offline_access", "displayName", "eduPerson" ]
+  ],
   "id": 1000
 }
