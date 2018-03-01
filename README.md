@@ -51,3 +51,7 @@ https://localhost:8443/cas/oidc/.well-known
 
 # Configuration Notes
 ## Custom Login Provider
+
+
+openssl s_client -connect localhost:8443 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > certfile.txt
+sudo $JAVA_HOME/bin/keytool -import -alias "selfcert" -file certfile.txt -keystore $JAVA_HOME/jre/lib/security/cacerts
