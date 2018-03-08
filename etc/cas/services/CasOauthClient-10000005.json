@@ -1,0 +1,15 @@
+{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "ngref_oauth2_client",
+  "clientSecret": "secret",
+  "serviceId" : "^https://localhost:8445/callback.html",
+  "name": "OAUTH2_CLIENT",
+  "implicit": true,
+  "supportedGrantTypes" : [ "java.util.HashSet",
+    [ "implicit" ]
+  ],
+  "scopes" : [ "java.util.HashSet",
+    [ "profile", "email", "address", "phone", "offline_access", "displayName", "eduPerson" ]
+  ],
+  "id": 1000
+}
