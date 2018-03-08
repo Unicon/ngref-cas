@@ -1,7 +1,6 @@
 {
   "@class" : "org.apereo.cas.services.OidcRegisteredService",
   "clientId": "reference_client",
-  "clientSecret": "secret",
   "serviceId" : "^https://localhost:8445/callback.html",
   "name": "OIDC",
   "implicit": true,

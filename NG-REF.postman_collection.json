@@ -1,0 +1,208 @@
+{
+	"info": {
+		"name": "NG-REF",
+		"_postman_id": "507aabe4-0260-4312-82e1-20d617b45edc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CAS Endpoints",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{ngref_cas_base_url}}/oidc/.well-known",
+					"host": [
+						"{{ngref_cas_base_url}}"
+					],
+					"path": [
+						"oidc",
+						".well-known"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Greeting",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{ngref_base_url}}/user/parker",
+					"host": [
+						"{{ngref_base_url}}"
+					],
+					"path": [
+						"user",
+						"parker"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{ngref_base_url}}/user/pneff@unicon.net",
+					"host": [
+						"{{ngref_base_url}}"
+					],
+					"path": [
+						"user",
+						"pneff@unicon.net"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get lms user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/user/pneffxxx/inst/1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"pneffxxx",
+						"inst",
+						"1234"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get User OAUTH2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI4MTM2NWJhMS00YWM1LTRlN2EtOTcyYS0yNTU2YmQ2OTQ4NGQiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvY2FzL29pZGMiLCJhdWQiOiJyZWZlcmVuY2VfY2xpZW50IiwiZXhwIjoxNTIwNDY2NDkwLCJpYXQiOjE1MjA0Mzc2OTAsIm5iZiI6MTUyMDQzNzM5MCwic3ViIjoicmVmZXJlbmNlX2NsaWVudCIsImFtciI6W10sInN0YXRlIjoiIiwibm9uY2UiOiIiLCJhdF9oYXNoIjoiX3VKdzNtZWRvd1JZU0V3MjBnRHN2ZyIsInByZWZlcnJlZF91c2VybmFtZSI6InJlZmVyZW5jZV9jbGllbnQifQ.XnTXazYNooWl8T3oByCzhPqAZ7GYvX_SOh3XB54m_VQO-ymCrxuDgxX2ejiWgoycJkFehaNRrJ_55HoKLWZm80AHpfArvZKQZuteXOyniBXXv9SEjMWgOK-5kwK2Ai7p-DRt6pnApU1ExaVNdGk2A6AaRRtXeWvEjDkU6woeJd6CaT-WM0X5-oqky5gboNdxhXY27DRW5-5XeigyD1_rATCJePR6_n1SFRRczyf9TTqNxdZooUGXadb3lhKgqREmL6a2x4mVuxneSc9gvbRALBhHyU9PXhDuNyd49TK3QD3VP_bpiCAiDZzjlFtx3IEnD5Zyk3TzFCwgpRuK96WzNQ"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{ngref_api_base_url}}/user/pneff@unicon.net",
+					"host": [
+						"{{ngref_api_base_url}}"
+					],
+					"path": [
+						"user",
+						"pneff@unicon.net"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get ID Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ngref_oauth2_client",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ngref_cas_base_url}}/oidc/accessToken",
+					"host": [
+						"{{ngref_cas_base_url}}"
+					],
+					"path": [
+						"oidc",
+						"accessToken"
+					]
+				},
+				"description": "Get an ID token from CAS via OAUTH2 Client Credentials"
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiIxZjI4MThhZS01OGI2LTQ5Y2YtOWY1Yy1iNjA1YzM2NTZjOWIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvY2FzL29pZGMiLCJhdWQiOiJyZWZlcmVuY2VfY2xpZW50IiwiZXhwIjoxNTIwNDg3MTkxLCJpYXQiOjE1MjA0NTgzOTEsIm5iZiI6MTUyMDQ1ODA5MSwic3ViIjoicmVmZXJlbmNlX2NsaWVudCIsImFtciI6W10sInN0YXRlIjoiIiwibm9uY2UiOiIiLCJhdF9oYXNoIjoiVzRPVGlKQWt1eXptZEdFOVJNandTQSIsInByZWZlcnJlZF91c2VybmFtZSI6InJlZmVyZW5jZV9jbGllbnQifQ.YZG2mMz11bnKUClXPt-QRlSEWooq5tuAHSTbwtWC33NkHQLVtioyf-LXwG60_e36171AiJhHVw5ixn_Ivnr353_L-hW1n4uIUnB7Rb1GljduUVxM5ouAzX1gSzfHZlRk53OerouEiHhXQPUBOygLYI2UPGKfP0NTrHRO8bCGzrSiTFuw_X56tJRvuWXcWeA34I8GTpiVz3FlufjJlCFtfhwqfSNAKQfXFosB2Lf-U6prGyVAv-78gJN9vGAdk-bqdlv0B-dZ6IbLuAPjbfU-yo6spzQQF7_NYmW3mR5IMEMYxDP0pmcbrhFgFkYWpkl8ZzYodEHXJgKElSbeeI7l4Q"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "myuser",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mypassword",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{ngref_api_base_url}}/user/auth",
+					"host": [
+						"{{ngref_api_base_url}}"
+					],
+					"path": [
+						"user",
+						"auth"
+					]
+				},
+				"description": "Get an ID token from CAS via OAUTH2 Client Credentials"
+			},
+			"response": []
+		}
+	]
+}
