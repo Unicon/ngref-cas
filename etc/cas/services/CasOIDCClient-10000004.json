@@ -2,7 +2,7 @@
   "@class" : "org.apereo.cas.services.OidcRegisteredService",
   "clientId": "reference_client",
   "clientSecret": "secret",
-  "serviceId" : "^http://localhost/callback.html",
+  "serviceId" : "^https://localhost:8445/callback.html",
   "name": "OIDC",
   "implicit": true,
   "supportedGrantTypes" : [ "java.util.HashSet",
