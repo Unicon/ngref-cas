@@ -4,6 +4,7 @@
   "serviceId" : "^https://localhost:8445/callback.html",
   "name": "OIDC",
   "implicit": true,
+  "bypassApprovalPrompt": true,
   "supportedGrantTypes" : [ "java.util.HashSet",
     [ "implicit" ]
   ],
