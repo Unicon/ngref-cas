@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.security.auth.login.FailedLoginException;
 import java.security.GeneralSecurityException;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 Example CAS Custom Authentication class that can be used as a starting point for a Custom authentication class that validates
@@ -30,8 +32,14 @@ public class NgAuthenticationHandler extends AbstractUsernamePasswordAuthenticat
         LOGGER.info("authenticating user {}", credential.getUsername());
     // this can be replaced with a call to the NGUser API
         if ("parker".equalsIgnoreCase(credential.getUsername()) && "password".equalsIgnoreCase(credential.getPassword())) {
+            Map<String, Object> attrs = new HashMap<>();
+            attrs.put("userId", "parker");
+            attrs.put("firstName", "Parker");
+            attrs.put("lastName", "Neff");
+            attrs.put("roles", "student");
+
             return createHandlerResult(credential,
-                    this.principalFactory.createPrincipal(credential.getUsername()), null);
+                    this.principalFactory.createPrincipal(credential.getUsername(), attrs), null);
         } else {
            throw new FailedLoginException("Sorry, you are a failure!");
 
