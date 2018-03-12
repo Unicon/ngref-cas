@@ -7,13 +7,20 @@ The reference implementaton demonstrates the use of CAS to fulfil the following 
 * Demonstrates customizing CAS using the CAS overlay process
 
 
-CAS Overlay For Wiley NextGEN CAS server
 
 
 #
 # Wiley Build Instructions
+(The following instructions will create a c:\etc\cas directory on your workstation)
+
 To build and run this on a local workstation, perform the following steps:
-(on windows use build.cmd instead of build.sh)
+
+
+ 
+## Generate a self signed certificate  
+    build.cmd gencert
+## Build and run the CAS ervier
+    build.cmd run    
  
 create /etc/cas dir.  Make sure you have permission to add files
 
@@ -29,6 +36,12 @@ run CAS as a local service
 ```bash
 ./build.sh run
 ```
+
+
+
+
+
+
 It will take a little while to start up. Once is does point your browser to https://localhost:8443/cas and sign on with  parker/password
   
 # Custom Authentication Handler
