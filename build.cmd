@@ -52,7 +52,7 @@
 
 :package
     call %MAVEN_CMD% clean package -T 5 %1 %2 %3
-    call copy
+    call copy:
     exit /B %ERRORLEVEL%
 @goto:eof
 
