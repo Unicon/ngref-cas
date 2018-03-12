@@ -16,10 +16,12 @@ The reference implementaton demonstrates the use of CAS to fulfil the following 
 To build and run this on a local workstation, perform the following steps:
 
 
+## Package the CAS Server
+    build.cmd package
+## Install the self signed cert into your JVM keystore (you may need to run this with Admin privs)
+    installCert.cmd
  
-## Generate a self signed certificate  
-    build.cmd gencert
-## Build and run the CAS ervier
+## Build and run the CAS Server
     build.cmd run    
  
 create /etc/cas dir.  Make sure you have permission to add files
