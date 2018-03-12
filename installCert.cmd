@@ -5,3 +5,5 @@
 
 "%JAVA_HOME%/bin/keytool" -import -alias "selfcert" -file certfile.txt -keystore "%JAVA_HOME%/jre/lib/security/cacerts"
 
+pause
+
