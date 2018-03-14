@@ -5,11 +5,12 @@
   "name": "OIDC",
   "implicit": true,
   "bypassApprovalPrompt": true,
+  "generateRefreshToken": false,
   "supportedGrantTypes" : [ "java.util.HashSet",
     [ "implicit" ]
   ],
   "scopes" : [ "java.util.HashSet",
-    [ "profile", "email", "address", "phone", "offline_access", "displayName", "eduPerson" ]
+    [ "profile", "openid" ]
   ],
   "id": 1000
 }
