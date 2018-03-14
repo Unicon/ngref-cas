@@ -5,7 +5,7 @@
 
 
 
-"%JAVA_HOME%/bin/keytool" -import -alias "selfcert" -file c:\etc\cas\selfSigned.cer -keystore "%JAVA_HOME%/jre/lib/security/cacerts"
+"%JAVA_HOME%/bin/keytool" -import -alias "selfcert" -file c:\etc\cas\selfSigned.cer -keystore "%JAVA_HOME%/jre/lib/security/cacerts"``
 
 pause
 
