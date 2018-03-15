@@ -12,5 +12,8 @@
   "scopes" : [ "java.util.HashSet",
     [ "profile", "openid" ]
   ],
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy"
+  },
   "id": 1000
 }

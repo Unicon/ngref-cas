@@ -94,7 +94,10 @@
         <AsyncLogger name="com.hazelcast" level="warn" />
         <AsyncLogger name="org.apereo.spring" level="warn" />
         <AsyncLogger name="com.wileyng.cas" level="debug" />
-        <AsyncLogger name="org.apereo.cas.oidc.profile" level="debug" />
+        <AsyncLogger name="org.apereo.cas.oidc.profile" level="INFO" />
+        <AsyncLogger name="org.apereo.cas.oidc.token" level="debug" />
+
+
 
 
         <!-- Log perf stats only to perfStats.log -->
