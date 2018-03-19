@@ -18,7 +18,7 @@ public class NgAuthenticationEventExecutionPlanConfiguration
 
     @Bean
     public AuthenticationHandler ngAuthenticationHandler() {
-        final NgAuthenticationHandler handler = new NgAuthenticationHandler("hello", null, null, 1);
+        final NgAuthenticationHandler handler = new NgAuthenticationHandler("NgAuthentication", null, null, 1);
         /*
             Configure the handler by invoking various setter methods.
             Note that you also have full access to the collection of resolved CAS settings.

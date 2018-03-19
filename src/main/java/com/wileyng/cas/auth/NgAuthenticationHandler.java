@@ -8,6 +8,7 @@ import org.apereo.cas.authentication.principal.PrincipalFactory;
 import org.apereo.cas.services.ServicesManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.FailedLoginException;
 import java.security.GeneralSecurityException;
@@ -22,6 +23,9 @@ Currently the only valid credential is parker/password
 public class NgAuthenticationHandler extends AbstractUsernamePasswordAuthenticationHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(NgAuthenticationHandler.class);
 
+    @Value("${cas.authn.rest.uri}")
+    private String restUri;
+
 
     public NgAuthenticationHandler(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order) {
         super(name, servicesManager, principalFactory, order);
@@ -29,7 +33,7 @@ public class NgAuthenticationHandler extends AbstractUsernamePasswordAuthenticat
 
     protected HandlerResult authenticateUsernamePasswordInternal(final UsernamePasswordCredential credential,
                                                                  final String originalPassword) throws GeneralSecurityException {
-        LOGGER.info("authenticating user {}", credential.getUsername());
+        LOGGER.debug("authenticating user {}", credential.getUsername() + " to URI " + restUri);
     // this can be replaced with a call to the NGUser API
         if ("parker".equalsIgnoreCase(credential.getUsername()) && "password".equalsIgnoreCase(credential.getPassword())) {
             Map<String, Object> attrs = new HashMap<>();

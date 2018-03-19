@@ -95,7 +95,7 @@
         <AsyncLogger name="org.apereo.spring" level="warn" />
         <AsyncLogger name="com.wileyng.cas" level="debug" />
         <AsyncLogger name="org.apereo.cas.oidc.profile" level="INFO" />
-        <AsyncLogger name="org.apereo.cas.oidc.token" level="debug" />
+        <AsyncLogger name="org.apereo.cas.oidc.token" level="INFO" />
 
 
 
