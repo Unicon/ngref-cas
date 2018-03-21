@@ -8,7 +8,7 @@
         -->
         <Property name="cas.log.dir" >.</Property>
         <!-- To see more CAS specific logging, adjust this property to info or debug or run server with -Dcas.log.leve=debug -->
-        <Property name="cas.log.level" >info</Property>
+        <Property name="cas.log.level" >warn</Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
@@ -95,7 +95,7 @@
         <AsyncLogger name="org.apereo.spring" level="warn" />
         <AsyncLogger name="com.wileyng.cas" level="debug" />
         <AsyncLogger name="org.apereo.cas.oidc.profile" level="INFO" />
-        <AsyncLogger name="org.apereo.cas.oidc.token" level="debug" />
+        <AsyncLogger name="org.apereo.cas.oidc.token" level="INFO" />
 
 
 
