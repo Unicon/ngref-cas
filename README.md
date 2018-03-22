@@ -73,3 +73,7 @@ sudo $JAVA_HOME/bin/keytool -import -alias "selfcert" -file certfile.txt -keysto
 
 
 https://apereo.github.io/2018/01/05/cas-deployment-with-proxy/
+
+
+#Redis
+    docker run -it --link some-redis:redis --rm redis redis-cli -h locahost -p 6379
