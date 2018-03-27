@@ -8,7 +8,7 @@
         -->
         <Property name="cas.log.dir" >.</Property>
         <!-- To see more CAS specific logging, adjust this property to info or debug or run server with -Dcas.log.leve=debug -->
-        <Property name="cas.log.level" >warn</Property>
+        <Property name="cas.log.level" >info</Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
@@ -61,7 +61,10 @@
         <!-- Loggers inherit appenders from Root Logger unless additivity is false -->
         <AsyncLogger name="org.apereo" level="${sys:cas.log.level}" includeLocation="true"/>
         <AsyncLogger name="org.apereo.services.persondir" level="${sys:cas.log.level}" includeLocation="true"/>
-        <AsyncLogger name="org.apereo.cas.web.flow" level="debut" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.web.flow" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.support.events.listener" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.ticket.registry" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.services" level="warn" includeLocation="true"/>
         <AsyncLogger name="org.apache" level="warn" />
         <AsyncLogger name="org.apache.http" level="error" />
         <AsyncLogger name="org.springframework" level="warn" />

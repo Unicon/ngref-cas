@@ -40,7 +40,7 @@ function debug() {
 }
 
 function redis() {
-	docker run --name cas-redis -p 6379:6379 -d redis
+	docker run --rm --name cas-redis -p 6379:6379 -d redis
 }
 
 function run() {
