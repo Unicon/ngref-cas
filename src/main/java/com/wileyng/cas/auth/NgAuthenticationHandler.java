@@ -65,11 +65,11 @@ public class NgAuthenticationHandler extends AbstractUsernamePasswordAuthenticat
             response = restTemplate.postForEntity(restUri, request, String.class);
             LOGGER.debug("Auth Success: " + response.getBody());
             return createHandlerResult(credential,
-                    this.principalFactory.createPrincipal(response.getBody(), null), null);
+                    this.principalFactory.createPrincipal(credential.getUsername(), null), null);
         } catch (HttpStatusCodeException e) {
             LOGGER.debug("Auth failure.  Return code: " + e.getStatusCode().value() + " reason: " + e.getMessage());
 
-            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+            if (e.getStatusCode() == HttpStatus.FORBIDDEN) {
                 LOGGER.debug("throwing FailedLoginException");
                 throw new FailedLoginException("Could not authenticate account for " + credential.getUsername());
 
@@ -87,56 +87,6 @@ public class NgAuthenticationHandler extends AbstractUsernamePasswordAuthenticat
 
         }
 
-
-//
-//        // SimplePrincipal simplePrincipal= restTemplate.postForObject(restUri, entity, SimplePrincipal.class);
-//        AuthResult authResult = null;
-//        try {
-//            authResult = restTemplate.postForObject(restUri, entity, AuthResult.class);
-//        } catch (RestClientException e) {
-//            LOGGER.warn(e.getMessage());
-//
-//        }
-
-        //     LOGGER.debug("got" + response.getStatusCode() + " " + response.getBody());
-
-        //  if (response.getStatusCode() == HttpStatus.OK) {
-//        return createHandlerResult(credential,
-//                this.principalFactory.createPrincipal(response.getBody(), null));
-//             //   this.principalFactory.createPrincipal(response.getBody(), null), null);
-
-//        return createHandlerResult(credential,
-//                   this.principalFactory.createPrincipal(response.getBody(), null), null);
-//
-//    } else if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
-//        throw new FailedLoginException("Could not authenticate account for " + credential.getUsername());
-//
-//
-//    } else if (response.getStatusCode() == HttpStatus.LOCKED) {
-//        throw new AccountLockedException("Could not authenticate locked account for " + credential.getUsername());
-//
-//    } else {
-//        throw new FailedLoginException("Rest endpoint returned an unknown status code "
-//                + response.getStatusCode() + " for " + credential.getUsername());
-//
-//    }
-
-//        // this can be replaced with a call to the NGUser API
-//        if ("parker".equalsIgnoreCase(credential.getUsername()) && "password".equalsIgnoreCase(credential.getPassword())) {
-//            Map<String, Object> attrs = new HashMap<>();
-//            attrs.put("userId", "parker");
-//            attrs.put("firstName", "Parker");
-//            attrs.put("lastName", "Neff");
-//            attrs.put("roles", "student");
-//
-//            return createHandlerResult(credential,
-//                    this.principalFactory.createPrincipal(credential.getUsername(), attrs), null);
-//        } else {
-//           throw new FailedLoginException("Sorry, you are a failure!");
-//
-//        }
-//
-//
     }
 
     /**

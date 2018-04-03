@@ -39,6 +39,10 @@ function debug() {
 	package && java -Xdebug -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n -jar target/cas.war
 }
 
+function redis() {
+	docker run --rm --name cas-redis -p 6379:6379 -d redis
+}
+
 function run() {
 	package && java -jar target/cas.war
 }
@@ -118,6 +122,9 @@ case "$1" in
     ;;
 "debug")
     debug "$@"
+    ;;
+"redis")
+    redis "$@"
     ;;
 "run")
     run "$@"
