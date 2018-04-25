@@ -108,4 +108,4 @@ The port  will default to the same port used by external clients
 to override the default internal host name (localhost) specify the new value in a *INTERNAL_HOST* system property
 
 ##### internal post system property
-to override the internal port name, specify the new value in a *INTERNAL_POST* system property    
+to override the internal port name, specify the new value in a *INTERNAL_PORT* system property    
