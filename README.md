@@ -69,3 +69,43 @@ https://apereo.github.io/2018/01/05/cas-deployment-with-proxy/
     docker run -it --link some-redis:redis --rm redis redis-cli -h locahost -p 6379
     
     
+    
+# Changes to allow Service Ticket Validation by internal host instead of external ELB
+
+The CAS Server attempts service ticket validation by initiating an internal back channel HTTP post to itself using the same hostname used by the browser
+This causes problems when the cas server is not allowed to intitiate a request to URL outside of its internal network.
+
+The following changes is a workaround to use an internal hostname.   
+
+
+### Add the following dependencies to pom.xml
+```
+<dependency>
+    <groupId>org.jasig.cas.client</groupId>
+    <artifactId>cas-client-core</artifactId>
+    <version>3.4.1</version>
+</dependency>
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
+```            
+    
+### Add the following class
+    org.jasig.cas.client.util.CommonUtils   
+    
+### To view debug messages for the new class add the following like to log4j.xml
+    <AsyncLogger name="org.jasig.cas.client.util.CommonUtils" level="debug" includeLocation="true"/>
+
+
+### System properties to control internal service ticket validation
+By default, the hostname used for internal service ticket validation will be *localhost*
+The port  will default to the same port used by external clients
+
+#### internal host system property
+to override the default internal host name (localhost) specify the new value in a *INTERNAL_HOST* system property
+
+##### internal post system property
+to override the internal port name, specify the new value in a *INTERNAL_POST* system property    

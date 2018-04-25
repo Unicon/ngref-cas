@@ -44,7 +44,7 @@ function redis() {
 }
 
 function run() {
-	package && java -jar target/cas.war
+	package && java -DINTERNAL_HOST=cas.parkerneff.com -DINTERNAL_PORT=8443 -jar target/cas.war
 }
 
 function runalone() {

@@ -65,6 +65,9 @@
         <AsyncLogger name="org.apereo.cas.support.events.listener" level="warn" includeLocation="true"/>
         <AsyncLogger name="org.apereo.cas.ticket.registry" level="warn" includeLocation="true"/>
         <AsyncLogger name="org.apereo.cas.services" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.pac4j.cas.credentials.authenticator.CasAuthenticator" level="debug" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.client.validation" level="debug" includeLocation="true"/>
+        <AsyncLogger name="org.jasig.cas.client.util.CommonUtils" level="debug" includeLocation="true"/>
         <AsyncLogger name="org.apache" level="warn" />
         <AsyncLogger name="org.apache.http" level="error" />
         <AsyncLogger name="org.springframework" level="warn" />
