@@ -16,7 +16,7 @@ import org.jasig.cas.client.validation.ProxyList;
 import org.jasig.cas.client.validation.ProxyListEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+
 
 /**
  * Common utilities so that we don't need to include Commons Lang.
@@ -26,15 +26,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @since 3.0
  */
 public final class CommonUtils {
-    private static String internalServiceHost = null;
 
-    @Value("${cas.authn.rest.uri}")
-    public void setInternalServiceHost(String serviceHost) {
-        internalServiceHost = serviceHost;
-
-
-    }
-    private String restUri;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonUtils.class);
 
@@ -52,6 +44,13 @@ public final class CommonUtils {
 
     private static final String SERVICE_PARAMETER_NAMES;
 
+    private static final String DEFAULT_INTERNAL_HOST = "localhost";
+
+
+    private static String INTERNAL_HOST;
+
+    private static int INTERNAL_PORT = 0;
+
     private CommonUtils() {
         // nothing to do
     }
@@ -64,6 +63,24 @@ public final class CommonUtils {
         SERVICE_PARAMETER_NAMES = serviceParameterSet.toString()
                 .replaceAll("\\[|\\]", "")
                 .replaceAll("\\s", "");
+
+        INTERNAL_HOST = System.getProperty("INTERNAL_HOST");
+        if (INTERNAL_HOST == null) {
+            INTERNAL_HOST = DEFAULT_INTERNAL_HOST;
+            LOGGER.info("Internal host set to default value of " + INTERNAL_HOST);
+
+        } else {
+            LOGGER.info("Internal host " + INTERNAL_HOST + " set by system property");
+        }
+        String internalPort = System.getProperty("INTERNAL_PORT");
+        if (internalPort != null) {
+            LOGGER.info("Internal port System Property=" + internalPort);
+            try {
+                INTERNAL_PORT = Integer.parseInt(internalPort);
+            } catch (NumberFormatException e) {
+                LOGGER.error("Could not parse " + internalPort + " into an Integer.  Internal port will not be overridden");
+            }
+        }
     }
     /**
      * Check whether the object is null or not. If it is, throw an exception and
@@ -412,23 +429,23 @@ public final class CommonUtils {
                                                final String encoding) {
 
 
-
-    //    String host = "cas.parkerneff.com";
-
-        String myHost = "cas.parkerneff.com";
-        URL myURL = null;
+        URL internalURL = null;
+        int internalPort = INTERNAL_PORT;
+        if (internalPort == 0) {
+            internalPort = constructedUrl.getPort();
+        }
 
         try {
-              myURL = new URL(constructedUrl.getProtocol(), myHost, constructedUrl.getPort(), constructedUrl.getFile());
+              internalURL = new URL(constructedUrl.getProtocol(), INTERNAL_HOST, internalPort, constructedUrl.getFile());
         } catch (MalformedURLException e) {
            LOGGER.error(e.getMessage());
         }
-        LOGGER.debug("Internal Server Host: " + internalServiceHost);
-        LOGGER.debug("About to do an backchannel call\nOriginal URL: " + constructedUrl.toString() + "\nOverride URL: " + myURL.toString());
+
+        LOGGER.debug("About to do an backchannel call\nOriginal URL: " + constructedUrl.toString() + "\nOverride URL: " + internalURL.toString());
         HttpURLConnection conn = null;
         InputStreamReader in = null;
         try {
-            conn = factory.buildHttpURLConnection(myURL.openConnection());
+            conn = factory.buildHttpURLConnection(internalURL.openConnection());
             ((HttpsURLConnection)conn).setHostnameVerifier(new AnyHostnameVerifier()); // TODO This is only for local testing
 
             if (CommonUtils.isEmpty(encoding)) {
